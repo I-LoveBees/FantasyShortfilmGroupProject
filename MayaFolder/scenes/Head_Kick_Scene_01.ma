@@ -1,4 +1,4 @@
-//Maya ASCII 2025ff03 scene
+//Maya ASCII 2025 scene
 //Name: Head_Kick_Scene_01.ma
 //Last modified: Tue, Apr 08, 2025 01:39:59 PM
 //Codeset: 1252
@@ -8,9 +8,10 @@ file -rdi 1 -ns "Knight_Retopo" -rfn "Knight_RetopoRN" -op "v=0;" -typ "mayaAsci
 file -r -ns "Skeleton" -dr 1 -rfn "SkeletonRN" -op "v=0;" -typ "mayaAscii" "C:/Users/brook/Github/FantasyShortfilmGroupProject/MayaFolder//assets/skeleton/Skeleton.ma";
 file -r -ns "Knight_Retopo" -dr 1 -rfn "Knight_RetopoRN" -op "v=0;" -typ "mayaAscii"
 		 "C:/Users/brook/Github/FantasyShortfilmGroupProject/MayaFolder//assets/knight/assets/Knight Retopo.ma";
-requires maya "2025ff03";
+requires maya "2025";
 requires "stereoCamera" "10.0";
-requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" "mtoa" "5.4.5";
+requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" "mtoa" "5.4.1.2";
+requires -nodeType "mayaUsdLayerManager" -dataType "pxrUsdStageData" "mayaUsdPlugin" "0.28.0";
 requires "stereoCamera" "10.0";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
