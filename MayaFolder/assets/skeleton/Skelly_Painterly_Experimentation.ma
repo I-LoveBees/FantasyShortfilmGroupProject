@@ -1,6 +1,6 @@
 //Maya ASCII 2024 scene
 //Name: Skelly_Painterly_Experimentation.ma
-//Last modified: Fri, Apr 04, 2025 04:03:19 PM
+//Last modified: Wed, Apr 09, 2025 03:17:02 PM
 //Codeset: 1252
 file -rdi 1 -ns "Skeleton" -dr 1 -rfn "SkeletonRN" -op "v=0;" -typ "mayaAscii"
 		 "D:/GithubStuff/University/FantasyShortfilmGroupProject/MayaFolder//assets/skeleton/Skeleton.ma";
@@ -13,30 +13,33 @@ file -r -ns "Skelly_Rig_Test_Anims" -dr 1 -rfn "Skelly_Rig_Test_AnimsRN" -op "v=
 		 -typ "mayaAscii" "D:/GithubStuff/University/FantasyShortfilmGroupProject/MayaFolder//assets/skeleton/Skelly_Rig_Test_Anims.ma";
 requires maya "2024";
 requires "stereoCamera" "10.0";
-requires -nodeType "MASH_Waiter" -nodeType "MASH_Random" -nodeType "MASH_Distribute"
-		 -nodeType "MASH_Color" -nodeType "MASH_Repro" "MASH" "450";
-requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" -nodeType "aiImage"
-		 -nodeType "aiFacingRatio" -nodeType "aiStandardSurface" -nodeType "aiMultiply" -nodeType "aiUserDataColor"
+requires -nodeType "MASH_Waiter" -nodeType "MASH_Offset" -nodeType "MASH_Random"
+		 -nodeType "MASH_Orient" -nodeType "MASH_Distribute" -nodeType "MASH_Color" -nodeType "MASH_Repro"
+		 "MASH" "450";
+requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" -nodeType "aiUtility"
+		 -nodeType "aiImage" -nodeType "aiFacingRatio" -nodeType "aiStandardSurface" -nodeType "aiAdd"
+		 -nodeType "aiLayerRgba" -nodeType "aiMultiply" -nodeType "aiRampRgb" -nodeType "aiUserDataColor"
 		 "mtoa" "5.3.4.1";
 requires -nodeType "mayaUsdLayerManager" -dataType "pxrUsdStageData" "mayaUsdPlugin" "0.25.0";
+requires "stereoCamera" "10.0";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
 fileInfo "product" "Maya 2024";
 fileInfo "version" "2024";
 fileInfo "cutIdentifier" "202310181224-69282f2959";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 26100)";
-fileInfo "UUID" "21F0A2A6-4ADC-2EBF-B1E1-ACBE4FC10CFB";
+fileInfo "UUID" "8812562A-46E2-8E67-1549-BAAA2BA2A307";
 createNode transform -s -n "persp";
 	rename -uid "9E6263CF-41F6-69BE-47C4-35B609672ED0";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -37.353233506309422 154.93215419510003 59.488132820480118 ;
-	setAttr ".r" -type "double3" -4.5383527286417147 325.00000000000068 0 ;
+	setAttr ".t" -type "double3" -4.9926605222354254 130.70341951762276 121.0408436539045 ;
+	setAttr ".r" -type "double3" 2.6616472713543908 356.19999999993553 -2.4902833117161456e-17 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "3E19E213-4D7D-B70D-6B6F-B990CAFDB53A";
 	setAttr -k off ".v" no;
 	setAttr ".rnd" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 63.970865044673296;
+	setAttr ".coi" 112.09884199626806;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -94,7 +97,6 @@ createNode camera -s -n "sideShape" -p "side";
 	setAttr ".ai_translator" -type "string" "orthographic";
 createNode transform -n "pCylinder1";
 	rename -uid "97DD0FE9-434F-CC92-3627-548B3464B223";
-	setAttr ".v" no;
 	setAttr ".rp" -type "double3" -1.4349296274686127e-42 2.0194839173657902e-28 -82.103169790848298 ;
 	setAttr ".sp" -type "double3" 3.0292258760486714e-28 7.815970093361102e-13 -82.103169790848298 ;
 createNode mesh -n "pCylinderShape1" -p "pCylinder1";
@@ -186,22 +188,22 @@ createNode mesh -n "pCylinderShape1" -p "pCylinder1";
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 createNode transform -n "camera1";
 	rename -uid "4AF5AD67-40E1-C1CB-2ADC-2AA17FEA092A";
+	addAttr -ci true -sn "mashOutFilter" -ln "mashOutFilter" -min 0 -max 1 -at "bool";
 createNode camera -n "cameraShape2" -p "camera1";
 	rename -uid "ABCD8E52-4EC1-BFAB-B979-4BBD25C55F1F";
 	setAttr -k off ".v";
-	setAttr ".rnd" no;
 	setAttr ".cap" -type "double2" 1.41732 0.94488 ;
 	setAttr ".ff" 0;
-	setAttr ".coi" 10.211022888345088;
+	setAttr ".coi" 64.806129061839869;
 	setAttr ".ow" 30;
 	setAttr ".imn" -type "string" "camera1";
 	setAttr ".den" -type "string" "camera1_depth";
 	setAttr ".man" -type "string" "camera1_mask";
+	setAttr ".tp" -type "double3" 0 82.414069198071957 4.669487476348877 ;
 createNode transform -n "Lights_01_Grp";
 	rename -uid "276DEA78-4F17-9337-3E7C-52B184E1D7B5";
 createNode transform -n "areaLight1" -p "Lights_01_Grp";
 	rename -uid "65514713-462A-D866-7F95-89B811317FEE";
-	setAttr ".v" no;
 	setAttr ".rp" -type "double3" -1.5021584225647538e-14 -1.8741560146292473e-14 0 ;
 	setAttr ".rpt" -type "double3" 6.2821212782485467e-15 1.954524318024036e-15 1.4788890589114291e-14 ;
 	setAttr ".sp" -type "double3" -1.6653345369377348e-16 -4.4408920985006262e-16 0 ;
@@ -211,14 +213,13 @@ createNode areaLight -n "areaLightShape1" -p "areaLight1";
 	setAttr -k off ".v";
 	setAttr ".in" 0.5;
 	setAttr ".col" 341.42298129756483;
-	setAttr ".ai_exposure" 18;
+	setAttr ".ai_exposure" 19;
 	setAttr ".ai_use_color_temperature" yes;
 	setAttr ".ai_color_temperature" 5000;
 createNode transform -n "Lights_02_Grp";
 	rename -uid "CD09F79E-412B-2DF4-7540-53A79C7113F7";
 createNode transform -n "areaLight2" -p "Lights_02_Grp";
 	rename -uid "9CBF7F5C-4641-9794-FDF3-09A4C379D977";
-	setAttr ".v" no;
 	setAttr ".rp" -type "double3" 2.5035973709412566e-15 0 3.7483120292584946e-14 ;
 	setAttr ".rpt" -type "double3" -2.8810120025748252e-14 1.1208981988524875e-14 -1.3119666201318892e-14 ;
 	setAttr ".sp" -type "double3" 2.7755575615628914e-17 0 8.8817841970012523e-16 ;
@@ -228,7 +229,7 @@ createNode areaLight -n "areaLightShape2" -p "areaLight2";
 	setAttr -k off ".v";
 	setAttr ".in" 0.5;
 	setAttr ".col" 341.42298129756483;
-	setAttr ".ai_exposure" 15;
+	setAttr ".ai_exposure" 16;
 	setAttr ".ai_use_color_temperature" yes;
 	setAttr ".ai_color_temperature" 9000;
 createNode camera -n "cameraShape1" -p "areaLight2";
@@ -275,10 +276,46 @@ createNode mesh -n "BrushStroke_Shape1" -p "BrushStroke_01";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
-createNode transform -n "MASH1_ReproMesh";
+createNode transform -n "BrushStroke_02";
+	rename -uid "D0791066-4C6C-E60D-73A8-DC848217B804";
+	addAttr -ci true -sn "mashOutFilter" -ln "mashOutFilter" -min 0 -max 1 -at "bool";
+	setAttr ".v" no;
+	setAttr ".s" -type "double3" 5 5 5 ;
+createNode mesh -n "BrushStroke_Shape2" -p "BrushStroke_02";
+	rename -uid "2C287282-40B2-1135-67FD-2DA9E8FC878C";
+	setAttr -k off ".v";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr -s 5 ".gtag";
+	setAttr ".gtag[0].gtagnm" -type "string" "back";
+	setAttr ".gtag[0].gtagcmp" -type "componentList" 1 "e[3]";
+	setAttr ".gtag[1].gtagnm" -type "string" "front";
+	setAttr ".gtag[1].gtagcmp" -type "componentList" 1 "e[0]";
+	setAttr ".gtag[2].gtagnm" -type "string" "left";
+	setAttr ".gtag[2].gtagcmp" -type "componentList" 1 "e[1]";
+	setAttr ".gtag[3].gtagnm" -type "string" "right";
+	setAttr ".gtag[3].gtagcmp" -type "componentList" 1 "e[2]";
+	setAttr ".gtag[4].gtagnm" -type "string" "rim";
+	setAttr ".gtag[4].gtagcmp" -type "componentList" 1 "e[0:3]";
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr -s 4 ".uvst[0].uvsp[0:3]" -type "float2" 0 0 1 0 0 1 1 1;
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+	setAttr -s 4 ".vt[0:3]"  -0.5 0 0.5 0.5 0 0.5 -0.5 0 -0.5 0.5 0 -0.5;
+	setAttr -s 4 ".ed[0:3]"  0 1 0 0 2 0 1 3 0 2 3 0;
+	setAttr -ch 4 ".fc[0]" -type "polyFaces" 
+		f 4 0 2 -4 -2
+		mu 0 4 0 1 3 2;
+	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
+	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
+	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
+	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
+createNode transform -n "MASH_ReproMesh_Surface";
 	rename -uid "6477A958-428E-B7A8-C3A6-75BFF66DE008";
 	addAttr -ci true -sn "mashOutFilter" -ln "mashOutFilter" -min 0 -max 1 -at "bool";
-createNode mesh -n "MASH1_ReproMeshShape" -p "MASH1_ReproMesh";
+createNode mesh -n "MASH_ReproMesh_SurfaceShape" -p "MASH_ReproMesh_Surface";
 	rename -uid "CF97AE98-4C3E-A5F5-6E34-F3BCB1D5543C";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
@@ -303,6 +340,34 @@ createNode mesh -n "MASH1_ReproMeshShape" -p "MASH1_ReproMesh";
 	setAttr ".ai_viv" no;
 	setAttr ".ai_exptan" yes;
 	setAttr ".ai_expcol" yes;
+createNode transform -n "MASH_ReproMesh_BG";
+	rename -uid "8CD4E73E-4F9D-A577-59E4-FBA46C3AEC37";
+	addAttr -ci true -sn "mashOutFilter" -ln "mashOutFilter" -min 0 -max 1 -at "bool";
+createNode mesh -n "MASH_ReproMesh_BGShape" -p "MASH_ReproMesh_BG";
+	rename -uid "78999DD5-400E-7E21-2AD3-2A967A02210E";
+	setAttr -k off ".v";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".csh" no;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcol" yes;
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".clst[1].clsn" -type "string" "paintingMainBody_BG";
+	setAttr ".clst[1].clam" yes;
+	setAttr ".clst[1].rprt" 3;
+	setAttr ".ds" no;
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+	setAttr ".ai_self_shadows" no;
+	setAttr ".ai_opaque" no;
+	setAttr ".ai_vidr" no;
+	setAttr ".ai_visr" no;
+	setAttr ".ai_vidt" no;
+	setAttr ".ai_vist" no;
+	setAttr ".ai_viv" no;
+	setAttr ".ai_exptan" yes;
+	setAttr ".ai_expcol" yes;
 createNode transform -n "Camera_02_Grp";
 	rename -uid "4FD79F5E-453C-F081-577B-9D9763EB0532";
 createNode transform -n "camera2" -p "Camera_02_Grp";
@@ -310,6 +375,7 @@ createNode transform -n "camera2" -p "Camera_02_Grp";
 createNode camera -n "cameraShape2" -p "camera2";
 	rename -uid "5819D4D2-44B1-D743-A42B-329E072984CA";
 	setAttr -k off ".v";
+	setAttr ".rnd" no;
 	setAttr ".cap" -type "double2" 1.41732 0.94488 ;
 	setAttr ".ff" 0;
 	setAttr ".coi" 56.525292347266642;
@@ -334,6 +400,7 @@ createNode camera -n "cameraShape3" -p "camera3";
 	setAttr ".tp" -type "double3" 0 91.352284385776116 -4.313997177193869 ;
 createNode transform -n "areaLight3";
 	rename -uid "2B57D07A-4FB4-AA28-5A99-E9AF8B606C68";
+	setAttr ".v" no;
 	setAttr ".rp" -type "double3" -1.5021584225647538e-14 -1.8741560146292473e-14 0 ;
 	setAttr ".rpt" -type "double3" 6.2821212782485467e-15 1.954524318024036e-15 1.4788890589114291e-14 ;
 	setAttr ".sp" -type "double3" -1.6653345369377348e-16 -4.4408920985006262e-16 0 ;
@@ -348,6 +415,7 @@ createNode areaLight -n "areaLightShape3" -p "areaLight3";
 	setAttr ".ai_color_temperature" 5000;
 createNode transform -n "areaLight4";
 	rename -uid "02E32D32-456A-4C98-1410-479550FA1E7B";
+	setAttr ".v" no;
 	setAttr ".rp" -type "double3" 2.5035973709412566e-15 0 3.7483120292584946e-14 ;
 	setAttr ".rpt" -type "double3" -2.8810120025748252e-14 1.1208981988524875e-14 -1.3119666201318892e-14 ;
 	setAttr ".sp" -type "double3" 2.7755575615628914e-17 0 8.8817841970012523e-16 ;
@@ -369,21 +437,23 @@ createNode camera -n "cameraShape1" -p "areaLight4";
 	setAttr ".fcp" 1000;
 	setAttr ".coi" 311.38088075439532;
 	setAttr ".ow" 101.29267211963706;
+createNode place3dTexture -n "place3dTexture1";
+	rename -uid "E10010B7-4759-6296-AD18-ED80C44AABE5";
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "C1385458-4833-A050-57D0-2191B51B3DAB";
-	setAttr -s 7 ".lnk";
-	setAttr -s 7 ".slnk";
+	rename -uid "914665D6-427A-9DFC-9B2A-19A3DB8EF87C";
+	setAttr -s 9 ".lnk";
+	setAttr -s 9 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "9CF721D3-4E54-18B5-6D4C-A89ACFA13CE2";
+	rename -uid "704721ED-42A6-26C6-6CBE-F5A306A3BBCB";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "F98B80A0-4EA4-5BD8-E411-83A892E6F112";
+	rename -uid "B45B55EE-4413-E8BE-DE47-6C861541706F";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "0A5E2C6B-4D5D-66B8-2149-D9A845B24D86";
+	rename -uid "FBB97C7D-4607-D6E6-5AB0-D5A8FC830930";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "4057FDBC-4B51-27FC-6907-33857A5828BC";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "EA9D398E-4017-E507-31BB-F5837DDBEA36";
+	rename -uid "6C0796F0-4621-5F2E-CBD2-0592C69BD6E4";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "05577536-4085-65E6-A02A-42B782ECB4DA";
 	setAttr ".g" yes;
@@ -391,7 +461,7 @@ createNode aiOptions -s -n "defaultArnoldRenderOptions";
 	rename -uid "9AB45A3C-4B7E-8873-423E-7FB625730B85";
 	addAttr -ci true -sn "ARV_options" -ln "ARV_options" -dt "string";
 	setAttr ".version" -type "string" "5.3.4.1";
-	setAttr ".ARV_options" -type "string" "Test Resolution=100%;Camera=perspShape;Color Management.Gamma=1;Color Management.Exposure=0;Background.BG=BG Color;Background.Color=0 0 0;Background.Image=;Background.Scale=1    1;Background.Offset=0    0;Background.Apply Color Management=1;Foreground.Enable FG=0;Foreground.Image=;Foreground.Scale=1    1;Foreground.Offset=0    0;Foreground.Apply Color Management=1;";
+	setAttr ".ARV_options" -type "string" "Test Resolution=100%;Camera=camera1|cameraShape2;Color Management.Gamma=1;Color Management.Exposure=0;Background.BG=BG Color;Background.Color=0 0 0;Background.Image=;Background.Scale=1         1;Background.Offset=0         0;Background.Apply Color Management=1;Foreground.Enable FG=0;Foreground.Image=;Foreground.Scale=1         1;Foreground.Offset=0         0;Foreground.Apply Color Management=1;";
 createNode aiAOVFilter -s -n "defaultArnoldFilter";
 	rename -uid "81FC4762-4A8D-BA53-6413-A4B425C3724B";
 	setAttr ".ai_translator" -type "string" "gaussian";
@@ -417,7 +487,7 @@ createNode script -n "uiConfigurationScriptNode";
 		+ "            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n"
 		+ "            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n"
 		+ "            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1\n            -height 1\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Persp View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n"
-		+ "            -camera \"|persp\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 1\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 1\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n"
+		+ "            -camera \"|camera1\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 1\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 1\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n"
 		+ "            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n"
 		+ "            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1091\n            -height 709\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n"
 		+ "\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"ToggledOutliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"ToggledOutliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -docTag \"isolOutln_fromSeln\" \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 1\n            -showReferenceMembers 1\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -autoExpandAllAnimatedShapes 1\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n"
@@ -446,8 +516,8 @@ createNode script -n "uiConfigurationScriptNode";
 		+ "                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n                -objectFilterShowInHUD 1\n                -isFiltered 0\n                -colorResolution 4 4 \n                -bumpResolution 4 4 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 0\n                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -controllers 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n"
 		+ "                -cameras 1\n                -controlVertices 1\n                -hulls 1\n                -grid 1\n                -imagePlane 1\n                -joints 1\n                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -bluePencil 1\n                -greasePencils 0\n                -excludeObjectPreset \"All\" \n                -shadows 0\n                -captureSequenceNumber -1\n                -width 0\n                -height 0\n                -sceneRenderFilter 0\n"
 		+ "                -displayMode \"centerEye\" \n                -viewColor 0 0 0 1 \n                -useCustomBackground 1\n                $editorName;\n            stereoCameraView -e -viewSelected 0 $editorName;\n            stereoCameraView -e \n                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n                $editorName; };\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap true\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
-		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 1\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1091\\n    -height 709\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
-		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 1\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1091\\n    -height 709\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -camera \\\"|camera1\\\" \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 1\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1091\\n    -height 709\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -camera \\\"|camera1\\\" \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 1\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1091\\n    -height 709\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
 		+ "\t\t\t\t$configName;\n\n            setNamedPanelLayout (localizedPanelLabel(\"Current Layout\"));\n        }\n\n        panelHistory -e -clear mainPanelHistory;\n        sceneUIReplacement -clear;\n\t}\n\n\ngrid -spacing 5 -size 12 -divisions 5 -displayAxes yes -displayGridLines yes -displayDivisionLines yes -displayPerspectiveLabels no -displayOrthographicLabels no -displayAxesBold yes -perspectiveLabelPosition axis -orthographicLabelPosition edge;\nviewManip -drawCompass 0 -compassAngle 0 -frontParameters \"\" -homeParameters \"\" -selectionLockParameters \"\";\n}\n");
 	setAttr ".st" 3;
 createNode script -n "sceneConfigurationScriptNode";
@@ -3758,13 +3828,6 @@ createNode shadingEngine -n "standardSurface2SG";
 	setAttr ".ro" yes;
 createNode materialInfo -n "materialInfo1";
 	rename -uid "FBEB548B-445A-F968-144B-AE8FCEBA5C3A";
-createNode aiImage -n "aiImage1";
-	rename -uid "A2055A26-4934-5563-558C-C7A046646824";
-	addAttr -ci true -sn "viewNameUsed" -ln "viewNameUsed" -min 0 -max 1 -at "bool";
-	addAttr -ci true -sn "viewNameStr" -ln "viewNameStr" -dt "string";
-	setAttr ".filename" -type "string" "D:/GithubStuff/University/LocalFiles/TempStuff/paint_stroke_alpha_test.jpg";
-	setAttr ".cs" -type "string" "sRGB";
-	setAttr ".viewNameStr" -type "string" "<N/A>";
 createNode nodeGraphEditorInfo -n "MayaNodeEditorSavedTabsInfo";
 	rename -uid "C13D40AB-4954-26D6-642B-99831E777B14";
 	setAttr ".tgi[0].tn" -type "string" "Untitled_1";
@@ -3838,32 +3901,32 @@ createNode animCurveTL -n "camera1_translateX";
 	rename -uid "1C93A0DE-4C75-8721-F2E9-95A3F5FCD3FE";
 	setAttr ".tan" 10;
 	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  0 -40.695314446255374;
+	setAttr ".ktv[0]"  0 -30.42373401259367;
 createNode animCurveTL -n "camera1_translateY";
 	rename -uid "2C1DFCF7-4EB7-451E-E237-3A8814EE8420";
 	setAttr ".tan" 10;
 	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  0 164.56452280304737;
+	setAttr ".ktv[0]"  0 155.80232165772355;
 createNode animCurveTL -n "camera1_translateZ";
 	rename -uid "884B9616-4905-8A9A-B11C-9AB9739E85E3";
 	setAttr ".tan" 10;
 	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  0 101.4456898502434;
+	setAttr ".ktv[0]"  0 56.647156673366325;
 createNode animCurveTA -n "camera1_rotateX";
 	rename -uid "79FF73BF-4E50-9339-EA78-0789B43BE29F";
 	setAttr ".tan" 10;
 	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  0 -10.8;
+	setAttr ".ktv[0]"  0 -6.6000000000000165;
 createNode animCurveTA -n "camera1_rotateY";
 	rename -uid "A47F0B7D-4CD2-ED64-7112-21A4E9D14124";
 	setAttr ".tan" 10;
 	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  0 -24.80000000000004;
+	setAttr ".ktv[0]"  0 -32.000000000000099;
 createNode animCurveTA -n "camera1_rotateZ";
 	rename -uid "38FAB649-42E1-1BDD-B7F7-0AB9B789F167";
 	setAttr ".tan" 10;
 	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  0 0;
+	setAttr ".ktv[0]"  0 2.3440258694337467e-16;
 createNode animCurveTU -n "camera1_scaleX";
 	rename -uid "257FA328-4351-3DCE-110B-B1B53AE618BD";
 	setAttr ".tan" 10;
@@ -4095,16 +4158,19 @@ createNode reference -n "sharedReferenceNode";
 		"sharedReferenceNode";
 createNode reference -n "Skelly_Rig_Test_AnimsRN";
 	rename -uid "3A6CD609-4430-1138-0358-5B9741B41E13";
-	setAttr -s 4 ".phl";
+	setAttr -s 7 ".phl";
 	setAttr ".phl[1]" 0;
 	setAttr ".phl[2]" 0;
 	setAttr ".phl[3]" 0;
 	setAttr ".phl[4]" 0;
+	setAttr ".phl[5]" 0;
+	setAttr ".phl[6]" 0;
+	setAttr ".phl[7]" 0;
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"Skelly_Rig_Test_AnimsRN"
 		"Skelly_Rig_Test_Anims:SkeletonRN" 0
 		"Skelly_Rig_Test_AnimsRN" 0
-		"Skelly_Rig_Test_Anims:SkeletonRN" 18
+		"Skelly_Rig_Test_Anims:SkeletonRN" 22
 		1 "|Skelly_Rig_Test_Anims:Skeleton:Skeleton_Asset|Skelly_Rig_Test_Anims:Skeleton:Geometry|Skelly_Rig_Test_Anims:Skeleton:Skeleton_Geo|Skelly_Rig_Test_Anims:Skeleton:Skeleton_GeoShape" 
 		"mashOutFilter" "mashOutFilter" " -ci 1 -min 0 -max 1 -at \"bool\""
 		2 "|Skelly_Rig_Test_Anims:Skeleton:Skeleton_Asset|Skelly_Rig_Test_Anims:Skeleton:Geometry|Skelly_Rig_Test_Anims:Skeleton:Skeleton_Geo" 
@@ -4132,14 +4198,23 @@ createNode reference -n "Skelly_Rig_Test_AnimsRN";
 		2 "|Skelly_Rig_Test_Anims:Skeleton:Skeleton_Asset|Skelly_Rig_Test_Anims:Skeleton:Geometry|Skelly_Rig_Test_Anims:Skeleton:R_Skeleton_Rev_Arms_Geo|Skelly_Rig_Test_Anims:Skeleton:R_Skeleton_Rev_Arms_GeoShape" 
 		"displaySmoothMesh" " 0"
 		2 "Skelly_Rig_Test_Anims:Skeleton:SkellyTexture" "emission" " 0.25"
+		3 "|Skelly_Rig_Test_Anims:Skeleton:Skeleton_Asset|Skelly_Rig_Test_Anims:Skeleton:Geometry|Skelly_Rig_Test_Anims:Skeleton:Skeleton_Geo|Skelly_Rig_Test_Anims:Skeleton:Skeleton_GeoShape.instObjGroups" 
+		"Skelly_Rig_Test_Anims:Skeleton:set1.dagSetMembers" "-na"
 		5 3 "Skelly_Rig_Test_AnimsRN" "|Skelly_Rig_Test_Anims:Skeleton:Skeleton_Asset|Skelly_Rig_Test_Anims:Skeleton:Geometry|Skelly_Rig_Test_Anims:Skeleton:Skeleton_Geo.worldMatrix" 
 		"Skelly_Rig_Test_AnimsRN.placeHolderList[1]" ""
-		5 3 "Skelly_Rig_Test_AnimsRN" "|Skelly_Rig_Test_Anims:Skeleton:Skeleton_Asset|Skelly_Rig_Test_Anims:Skeleton:Geometry|Skelly_Rig_Test_Anims:Skeleton:Skeleton_Geo|Skelly_Rig_Test_Anims:Skeleton:Skeleton_GeoShape.worldMesh" 
+		5 3 "Skelly_Rig_Test_AnimsRN" "|Skelly_Rig_Test_Anims:Skeleton:Skeleton_Asset|Skelly_Rig_Test_Anims:Skeleton:Geometry|Skelly_Rig_Test_Anims:Skeleton:Skeleton_Geo.worldMatrix" 
 		"Skelly_Rig_Test_AnimsRN.placeHolderList[2]" ""
+		5 3 "Skelly_Rig_Test_AnimsRN" "|Skelly_Rig_Test_Anims:Skeleton:Skeleton_Asset|Skelly_Rig_Test_Anims:Skeleton:Geometry|Skelly_Rig_Test_Anims:Skeleton:Skeleton_Geo|Skelly_Rig_Test_Anims:Skeleton:Skeleton_GeoShape.instObjGroups" 
+		"Skelly_Rig_Test_AnimsRN.placeHolderList[3]" "Skelly_Rig_Test_Anims:Skeleton:set1.dsm"
+		
+		5 3 "Skelly_Rig_Test_AnimsRN" "|Skelly_Rig_Test_Anims:Skeleton:Skeleton_Asset|Skelly_Rig_Test_Anims:Skeleton:Geometry|Skelly_Rig_Test_Anims:Skeleton:Skeleton_Geo|Skelly_Rig_Test_Anims:Skeleton:Skeleton_GeoShape.worldMesh" 
+		"Skelly_Rig_Test_AnimsRN.placeHolderList[4]" ""
+		5 3 "Skelly_Rig_Test_AnimsRN" "|Skelly_Rig_Test_Anims:Skeleton:Skeleton_Asset|Skelly_Rig_Test_Anims:Skeleton:Geometry|Skelly_Rig_Test_Anims:Skeleton:Skeleton_Geo|Skelly_Rig_Test_Anims:Skeleton:Skeleton_GeoShape.worldMesh" 
+		"Skelly_Rig_Test_AnimsRN.placeHolderList[5]" ""
 		5 3 "Skelly_Rig_Test_AnimsRN" "Skelly_Rig_Test_Anims:Skeleton:SkellyTexture.outColor" 
-		"Skelly_Rig_Test_AnimsRN.placeHolderList[3]" ""
+		"Skelly_Rig_Test_AnimsRN.placeHolderList[6]" ""
 		5 4 "Skelly_Rig_Test_AnimsRN" "Skelly_Rig_Test_Anims:Skeleton:SkellyTexture.emissionColor" 
-		"Skelly_Rig_Test_AnimsRN.placeHolderList[4]" "";
+		"Skelly_Rig_Test_AnimsRN.placeHolderList[7]" "";
 	setAttr ".ptag" -type "string" "";
 lockNode -l 1 ;
 createNode file -n "file2";
@@ -4166,7 +4241,7 @@ createNode MASH_Distribute -n "MainBody_Paint_MASH_Distribute";
 	setAttr ".bRmpZ[0]"  0 1 1;
 	setAttr ".useFaceScale" yes;
 	setAttr ".faceScaleMultiplier" 3;
-	setAttr ".distanceAlongNormal" 0.10000000149011612;
+	setAttr ".distanceAlongNormal" 0.05000000074505806;
 	setAttr ".meshType" 4;
 	setAttr ".useUpVector" yes;
 	setAttr ".rt" 4;
@@ -4237,6 +4312,8 @@ createNode MASH_Random -n "MainBody_Paint_MASH_Random";
 	setAttr ".positionY" 0;
 	setAttr ".positionZ" 0;
 	setAttr ".rotationY" 360;
+	setAttr ".scaleX" 1;
+	setAttr ".scaleZ" 1;
 createNode polyNormal -n "polyNormal5";
 	rename -uid "AE12F133-4EE8-92ED-B47C-189E90EB32E5";
 	setAttr ".ics" -type "componentList" 1 "f[*]";
@@ -4439,30 +4516,401 @@ createNode animCurveTU -n "areaLight4_scaleZ";
 	setAttr ".tan" 10;
 	setAttr ".wgt" no;
 	setAttr ".ktv[0]"  0 42.20224164559226;
+createNode groupId -n "groupId2";
+	rename -uid "C13050E0-4588-7183-1B3B-7EB33B3502E1";
+createNode file -n "file5";
+	rename -uid "D4695217-4844-CE61-7189-ABB0F83D76E0";
+	setAttr ".ftn" -type "string" "D:/GithubStuff/University/FantasyShortfilmGroupProject/MayaFolder//substance/SkellyTextures/SkellyTemp_Toes_lambert1_BaseColor.1001.png";
+	setAttr ".cs" -type "string" "sRGB";
+createNode place2dTexture -n "place2dTexture5";
+	rename -uid "289C650B-4244-BC47-6314-A38051F9EB5F";
+createNode aiStandardSurface -n "brushStrokes_BG_MASH_aiStandardSurface";
+	rename -uid "5431FFCF-4D55-F8CE-6CA4-A0A96673E99D";
+	setAttr ".diffuse_roughness" 1;
+	setAttr ".specular_roughness" 1;
+	setAttr ".thin_walled" yes;
+	setAttr ".emission" 0.25;
+	setAttr ".emission_color" -type "float3" 0 0 0 ;
+createNode aiUserDataColor -n "aiUserDataColor2";
+	rename -uid "7676C890-49C3-DC04-6586-22A70F49E90E";
+	setAttr ".colorAttrName" -type "string" "paintingMainBody_BG";
+createNode shadingEngine -n "brushStrokes_BG_MASH_aiStandardSurfaceSG";
+	rename -uid "438161DA-4F43-B793-097D-80BBE1DF44FC";
+	setAttr ".ihi" 0;
+	setAttr ".ro" yes;
+createNode materialInfo -n "materialInfo4";
+	rename -uid "57E89281-460E-9571-0890-C0A6433E9237";
+createNode aiImage -n "aiImage1";
+	rename -uid "A2055A26-4934-5563-558C-C7A046646824";
+	addAttr -ci true -sn "viewNameUsed" -ln "viewNameUsed" -min 0 -max 1 -at "bool";
+	addAttr -ci true -sn "viewNameStr" -ln "viewNameStr" -dt "string";
+	setAttr ".filename" -type "string" "D:/GithubStuff/University/LocalFiles/TempStuff/paint_stroke_alpha_test.jpg";
+	setAttr ".cs" -type "string" "sRGB";
+	setAttr ".viewNameStr" -type "string" "<N/A>";
+createNode MASH_Waiter -n "MainBody_BG_MASH";
+	rename -uid "D2AF62A2-4BBD-2716-30C7-AFAADB870288";
+	addAttr -s false -ci true -h true -sn "instancerMessage" -ln "instancerMessage" 
+		-at "message";
+	setAttr ".filename" -type "string" "";
+	setAttr ".outlinerJSON" -type "string" "{\"expanded\": true}";
+createNode MASH_Repro -n "MainBody_BG_MASH_Repro";
+	rename -uid "81D24D7B-4B12-B1BA-0D1C-47AD228E6769";
+	addAttr -s false -ci true -h true -sn "instancerMessage" -ln "instancerMessage" 
+		-at "message";
+	setAttr ".numberOfObjects" 1;
+	setAttr ".setC" yes;
+	setAttr ".instancedGroup[0].inMesh[0].groupId[0]"  106;
+	setAttr ".instancedGroup[0].inMesh[0].inShGroupId[0]"  -1;
+createNode MASH_Random -n "MainBody_BG_MASH_Random";
+	rename -uid "ED8788A5-4712-F210-A1E0-2C9B89BDC819";
+	setAttr ".savedData" -type "newParticles" ;
+	setAttr ".transformationSpace" 2;
+	setAttr ".positionX" 0;
+	setAttr ".positionY" 0;
+	setAttr ".positionZ" 0;
+	setAttr ".rotationY" 360;
+	setAttr ".scaleX" 5;
+	setAttr ".scaleZ" 5;
+createNode MASH_Color -n "MainBody_BG_MASH_Color";
+	rename -uid "CC03836A-4B55-BB51-8048-97B30298FA22";
+	setAttr ".enable" yes;
+	setAttr ".colorSetName" -type "string" "paintingMainBody_BG";
+createNode MASH_Orient -n "MainBody_BG_MASH_Orient";
+	rename -uid "9A5B9E41-4103-26AE-9AD9-50AC8A627D24";
+	setAttr ".rMode" yes;
+createNode MASH_Offset -n "MainBody_BG_MASH_Offset";
+	rename -uid "57D15513-4452-52CC-C9A7-41BD4BF88416";
+	setAttr ".savedData" -type "newParticles" ;
+	setAttr ".transformationSpace" 2;
+	setAttr ".positionOffset" -type "float3" 0 -20 0 ;
+createNode MASH_Distribute -n "MainBody_BG_MASH_Distribute";
+	rename -uid "98EE3BF8-4400-ACBD-4657-02B259EC147F";
+	setAttr ".savedData" -type "newParticles" ;
+	setAttr ".mapDirection" 4;
+	setAttr ".pointCount" 50;
+	setAttr ".en" no;
+	setAttr -s 3 ".scaleRamp[0:2]"  0 0 1 0 0 1 1 1 1;
+	setAttr -s 3 ".rotationRamp[0:2]"  0 0 1 0 0 1 1 1 1;
+	setAttr -s 3 ".bRmp[0:2]"  0 0 1 0 0 1 1 1 1;
+	setAttr ".bRmpX[0]"  0 1 1;
+	setAttr ".bRmpY[0]"  0 1 1;
+	setAttr ".bRmpZ[0]"  0 1 1;
+	setAttr ".see" 53;
+	setAttr ".distanceAlongNormal" 0.10000000149011612;
+	setAttr ".meshType" 5;
+	setAttr ".rt" 4;
+createNode file -n "pasted__file2";
+	rename -uid "9A27AB6F-451B-D23E-E148-9C9F1A975A76";
+	setAttr ".ftn" -type "string" "D:/GithubStuff/University/FantasyShortfilmGroupProject/MayaFolder//substance/SkellyTextures/SkellyTemp_Toes_lambert1_BaseColor.1001.png";
+	setAttr ".cs" -type "string" "sRGB";
+createNode file -n "Skelly_Rig_Test_Anims1:Skeleton:file3";
+	rename -uid "17627B0A-420B-16E0-BC20-ECB2E0321D48";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "D:/GithubStuff/University/FantasyShortfilmGroupProject/MayaFolder//substance/SkellyTextures/SkellyTemp_Toes_lambert1_Roughness.1001.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode file -n "Skelly_Rig_Test_Anims1:Skeleton:file2";
+	rename -uid "DC9FECB0-4AC8-0E8F-84C8-AF9DED59227B";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "D:/GithubStuff/University/FantasyShortfilmGroupProject/MayaFolder//substance/SkellyTextures/SkellyTemp_Toes_lambert1_Normal.1001.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode place2dTexture -n "pasted__place2dTexture2";
+	rename -uid "F4A16E78-43B1-AB6B-D752-7698AF71D2B8";
+createNode bump2d -n "Skelly_Rig_Test_Anims1:Skeleton:bump2d1";
+	rename -uid "A0A07291-452F-3FC8-8296-89A3B5DD78AF";
+	setAttr ".bi" 1;
+	setAttr ".vc1" -type "float3" 0 2.9999999e-05 0 ;
+	setAttr ".vc2" -type "float3" 9.9999997e-06 9.9999997e-06 0 ;
+createNode place2dTexture -n "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1";
+	rename -uid "7A4FCE73-4A79-A94A-1897-7F9FE4B637EF";
+createNode file -n "pasted__file3";
+	rename -uid "6C5B67CA-4E7C-5D33-F025-01A44731CA7D";
+	setAttr ".ftn" -type "string" "D:/GithubStuff/University/FantasyShortfilmGroupProject/MayaFolder//substance/SkellyTextures/SkellyTemp_Toes_lambert1_BaseColor.1001.png";
+	setAttr ".cs" -type "string" "sRGB";
+createNode file -n "Skelly_Rig_Test_Anims2:Skeleton:file3";
+	rename -uid "44E880CA-4C4C-E87E-0157-3B8C7D7D8543";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "D:/GithubStuff/University/FantasyShortfilmGroupProject/MayaFolder//substance/SkellyTextures/SkellyTemp_Toes_lambert1_Roughness.1001.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode place2dTexture -n "pasted__place2dTexture3";
+	rename -uid "B53F44F9-476C-2952-8BE7-1AA6F3F34D46";
+createNode file -n "Skelly_Rig_Test_Anims2:Skeleton:file2";
+	rename -uid "611BB245-4190-BBB7-A437-D69637FA5650";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "D:/GithubStuff/University/FantasyShortfilmGroupProject/MayaFolder//substance/SkellyTextures/SkellyTemp_Toes_lambert1_Normal.1001.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode bump2d -n "Skelly_Rig_Test_Anims2:Skeleton:bump2d1";
+	rename -uid "EB330AA3-488D-3F62-80DD-DDB787DEF65D";
+	setAttr ".bi" 1;
+	setAttr ".vc1" -type "float3" 0 2.9999999e-05 0 ;
+	setAttr ".vc2" -type "float3" 9.9999997e-06 9.9999997e-06 0 ;
+createNode place2dTexture -n "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1";
+	rename -uid "C91EC869-4C8D-FAB3-2BBE-18B4B608003B";
+createNode file -n "file6";
+	rename -uid "9290D6B7-4F0C-D21A-9B92-97B5FF1E8570";
+	setAttr ".ftn" -type "string" "D:/GithubStuff/University/FantasyShortfilmGroupProject/MayaFolder//substance/SkellyTextures/SkellyTemp_Toes_lambert1_BaseColor.1001.png";
+	setAttr ".cs" -type "string" "sRGB";
+createNode place2dTexture -n "place2dTexture6";
+	rename -uid "DED565E4-4E0A-5D87-1E6D-469639611D00";
+createNode file -n "file7";
+	rename -uid "9BCD0721-47C7-09EA-32A0-BDA79EE68F79";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "D:/GithubStuff/University/FantasyShortfilmGroupProject/MayaFolder//substance/SkellyTextures/SkellyTemp_Toes_lambert1_Roughness.1001.png";
+	setAttr ".cs" -type "string" "sRGB";
+createNode file -n "file8";
+	rename -uid "4955795C-4CFB-CDF1-CB8E-88B98BFE634D";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "D:/GithubStuff/University/FantasyShortfilmGroupProject/MayaFolder//substance/SkellyTextures/SkellyTemp_Toes_lambert1_Normal.1001.png";
+	setAttr ".cs" -type "string" "sRGB";
+createNode bump2d -n "bump2d1";
+	rename -uid "C2508C50-4807-8A00-CD8F-D9B97F0E507D";
+	setAttr ".bi" 1;
+	setAttr ".vc1" -type "float3" 0 5.9999998e-05 0 ;
+	setAttr ".vc2" -type "float3" 9.9999997e-06 9.9999997e-06 0 ;
+createNode place2dTexture -n "place2dTexture7";
+	rename -uid "8142624F-46D1-BE30-4FAE-9EACDF4FF11A";
+createNode place2dTexture -n "place2dTexture8";
+	rename -uid "C9459F6D-400F-490D-D470-9484273ACA28";
+createNode file -n "file9";
+	rename -uid "C4E70201-4268-FA31-542D-91A555F4399D";
+	setAttr ".ftn" -type "string" "D:/GithubStuff/University/FantasyShortfilmGroupProject/MayaFolder//substance/SkellyTextures/SkellyTemp_Toes_lambert1_BaseColor.1001.png";
+	setAttr ".cs" -type "string" "sRGB";
+createNode file -n "file10";
+	rename -uid "D56F77FB-40D5-4BCC-6AF0-75A70B05933C";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "D:/GithubStuff/University/FantasyShortfilmGroupProject/MayaFolder//substance/SkellyTextures/SkellyTemp_Toes_lambert1_Normal.1001.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode file -n "file11";
+	rename -uid "38BF75D1-4176-745E-D335-57B0CEB9F34B";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "D:/GithubStuff/University/FantasyShortfilmGroupProject/MayaFolder//substance/SkellyTextures/SkellyTemp_Toes_lambert1_Roughness.1001.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode multiplyDivide -n "multiplyDivide1";
+	rename -uid "B7E7669E-4E9A-D776-F729-BBB0EB6E4A55";
+createNode aiStandardSurface -n "Skelly_Tester_Material";
+	rename -uid "9F8E1D43-4E5A-6DF4-C477-538215F386C1";
+	setAttr ".emission" 0.25;
+createNode shadingEngine -n "set1";
+	rename -uid "C5EC8EDF-471B-D6A3-F0A8-CDA2F5F4EF3A";
+	setAttr ".ihi" 0;
+	setAttr -s 2 ".dsm";
+	setAttr ".ro" yes;
+createNode materialInfo -n "materialInfo5";
+	rename -uid "C9D54D75-4638-B6BA-4653-C0BBA1F90763";
+createNode bump2d -n "bump2d2";
+	rename -uid "82169E22-400E-2528-E7F5-4591BF587105";
+	setAttr ".bi" 1;
+	setAttr ".vc1" -type "float3" 0 9.9999997e-06 0 ;
+	setAttr ".vc2" -type "float3" 9.9999997e-06 9.9999997e-06 0 ;
+createNode file -n "file12";
+	rename -uid "A1C5102F-45DF-7D52-0059-FE84304053D8";
+	setAttr ".ftn" -type "string" "D:/GithubStuff/University/FantasyShortfilmGroupProject/MayaFolder//substance/SkellyTextures/SkellyTemp_Toes_lambert1_BaseColor.1001.png";
+	setAttr ".cs" -type "string" "sRGB";
+createNode place2dTexture -n "place2dTexture9";
+	rename -uid "3C11E706-43DD-915A-3B04-FC88227C0094";
+createNode aiUtility -n "aiUtility1";
+	rename -uid "1A09B422-4924-70A9-F7DB-1ABA43F640AA";
+	setAttr ".shade_mode" 1;
+createNode aiRampRgb -n "aiRampRgb1";
+	rename -uid "15C6E170-465A-B57F-8961-F1BD2F97E02A";
+	setAttr ".type" 0;
+	setAttr -s 2 ".aiRamp";
+	setAttr ".aiRamp[0].aiRampp" 0.80000001192092896;
+	setAttr ".aiRamp[0].aiRampcv" -type "float3" 0 0 0 ;
+	setAttr ".aiRamp[0].aiRampi" 1;
+	setAttr ".aiRamp[1].aiRampp" 1;
+	setAttr ".aiRamp[1].aiRampcv" -type "float3" 1 0.71780002 0.3725 ;
+	setAttr ".aiRamp[1].aiRampi" 1;
+createNode aiRampRgb -n "aiRampRgb2";
+	rename -uid "49CA0519-4A88-8857-9057-B6BA853BCA5D";
+	setAttr ".type" 0;
+	setAttr -s 2 ".aiRamp";
+	setAttr ".aiRamp[0].aiRampp" 0.80000001192092896;
+	setAttr ".aiRamp[0].aiRampcv" -type "float3" 0 0 0 ;
+	setAttr ".aiRamp[0].aiRampi" 1;
+	setAttr ".aiRamp[1].aiRampp" 1;
+	setAttr ".aiRamp[1].aiRampcv" -type "float3" 1 0.71780002 0.3725 ;
+	setAttr ".aiRamp[1].aiRampi" 1;
+createNode aiRampRgb -n "aiRampRgb3";
+	rename -uid "F1F3CF00-4F1E-CA47-B65D-E492CCB6455F";
+	setAttr ".type" 0;
+	setAttr -s 2 ".aiRamp";
+	setAttr ".aiRamp[0].aiRampp" 0.80000001192092896;
+	setAttr ".aiRamp[0].aiRampcv" -type "float3" 0 0 0 ;
+	setAttr ".aiRamp[0].aiRampi" 1;
+	setAttr ".aiRamp[1].aiRampp" 1;
+	setAttr ".aiRamp[1].aiRampcv" -type "float3" 1 0.71780002 0.3725 ;
+	setAttr ".aiRamp[1].aiRampi" 1;
+createNode aiAdd -n "aiAdd1";
+	rename -uid "2B6874F6-4916-5BBF-2B14-5A9F188EA66C";
+createNode aiAdd -n "aiAdd2";
+	rename -uid "AC7166D6-4E86-BE53-172D-C2B0B478F069";
+createNode aiRampRgb -n "aiRampRgb4";
+	rename -uid "9B99C4DC-4036-D625-08EA-FBAE2DD95C2E";
+	setAttr ".type" 0;
+	setAttr -s 2 ".aiRamp";
+	setAttr ".aiRamp[0].aiRampp" 0.34782609343528748;
+	setAttr ".aiRamp[0].aiRampcv" -type "float3" 0 0 0 ;
+	setAttr ".aiRamp[0].aiRampi" 1;
+	setAttr ".aiRamp[1].aiRampp" 0;
+	setAttr ".aiRamp[1].aiRampcv" -type "float3" 0.1047973 0.17399999 0 ;
+	setAttr ".aiRamp[1].aiRampi" 1;
+createNode aiRampRgb -n "aiRampRgb5";
+	rename -uid "AEFED69A-4C77-EBB7-2EEA-EA820EAA01F3";
+	setAttr ".type" 0;
+	setAttr -s 2 ".aiRamp";
+	setAttr ".aiRamp[0].aiRampp" 0.34782609343528748;
+	setAttr ".aiRamp[0].aiRampcv" -type "float3" 0 0 0 ;
+	setAttr ".aiRamp[0].aiRampi" 1;
+	setAttr ".aiRamp[1].aiRampp" 0;
+	setAttr ".aiRamp[1].aiRampcv" -type "float3" 0.14033201 0.233 0 ;
+	setAttr ".aiRamp[1].aiRampi" 1;
+createNode aiRampRgb -n "aiRampRgb6";
+	rename -uid "83937F17-4CAC-057F-30FA-9EBC3F89D688";
+	setAttr ".type" 0;
+	setAttr -s 2 ".aiRamp";
+	setAttr ".aiRamp[0].aiRampp" 0.34782609343528748;
+	setAttr ".aiRamp[0].aiRampcv" -type "float3" 0 0 0 ;
+	setAttr ".aiRamp[0].aiRampi" 1;
+	setAttr ".aiRamp[1].aiRampp" 0;
+	setAttr ".aiRamp[1].aiRampcv" -type "float3" 0.14033201 0.233 0 ;
+	setAttr ".aiRamp[1].aiRampi" 1;
+createNode aiAdd -n "aiAdd3";
+	rename -uid "AD6F3439-4A71-D295-31DF-B69B6F97F4F8";
+createNode aiAdd -n "aiAdd4";
+	rename -uid "F1B1C48A-44F9-E959-822C-558240216B82";
+createNode projection -n "projection1";
+	rename -uid "642CA483-485E-1245-1E5B-AF9230D16A26";
+	setAttr ".t" 8;
+createNode file -n "file13";
+	rename -uid "A6AFEE44-407F-BC34-BB65-82B06C652934";
+	setAttr ".ftn" -type "string" "D:/GithubStuff/University/LocalFiles/TempStuff/tiling_paint_strokes.jpg";
+	setAttr ".cs" -type "string" "Raw";
+createNode place2dTexture -n "place2dTexture10";
+	rename -uid "8F4E0F3A-4099-1D96-B429-E5ACD6F6D02C";
+	setAttr ".re" -type "float2" 3 3 ;
+createNode aiLayerRgba -n "aiLayerRgba1";
+	rename -uid "CB583316-424D-102D-AAB5-3199F00364DD";
+	setAttr ".name1" -type "string" "Base_Color";
+	setAttr ".enable2" yes;
+	setAttr ".name2" -type "string" "Highlights";
+	setAttr ".operation2" 30;
+	setAttr ".enable3" yes;
+	setAttr ".name3" -type "string" "Shadows";
+	setAttr ".operation3" 23;
+createNode reverse -n "reverse1";
+	rename -uid "C81EE57C-4A10-6D73-4F19-879C3D9EF4A4";
+createNode animCurveTA -n "place2dTexture10_rotateUV";
+	rename -uid "8520A4B9-4CA0-CC87-CF3C-ADB96F341142";
+	setAttr ".tan" 10;
+	setAttr ".wgt" no;
+	setAttr -s 4 ".ktv[0:3]"  0 5 4 10 8 59.999999999999993 12 250.00000000000003;
+	setAttr -s 4 ".kot[0:3]"  5 5 5 5;
+	setAttr ".pre" 3;
+	setAttr ".pst" 3;
+createNode animCurveTU -n "place2dTexture10_offsetU";
+	rename -uid "4695F07F-4FA5-0061-60B2-288D65ABC6EE";
+	setAttr ".tan" 10;
+	setAttr ".wgt" no;
+	setAttr -s 4 ".ktv[0:3]"  0 0 4 0.10000000149011612 8 0.5 12 0.75;
+	setAttr -s 4 ".kot[0:3]"  5 5 5 5;
+	setAttr ".pre" 3;
+	setAttr ".pst" 3;
+createNode animCurveTU -n "place2dTexture10_offsetV";
+	rename -uid "DC8B29A9-4077-2B32-3219-EDA47F6CEA6E";
+	setAttr ".tan" 10;
+	setAttr ".wgt" no;
+	setAttr -s 4 ".ktv[0:3]"  0 0 4 0.10000000149011612 8 0.30000001192092896
+		 12 0.60000002384185791;
+	setAttr -s 4 ".kot[0:3]"  5 5 5 5;
+	setAttr ".pre" 3;
+	setAttr ".pst" 3;
 createNode mayaUsdLayerManager -n "mayaUsdLayerManager1";
-	rename -uid "F44A7E57-4C67-8494-B9D4-04BDDBEAA819";
+	rename -uid "7B4AB8D0-4727-A5EE-350C-0DB1E378DE96";
 	setAttr ".sst" -type "string" "";
 createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
-	rename -uid "F24198E1-4FCF-888A-BD9D-32B94F120874";
+	rename -uid "5211F1FF-4112-F7B5-D8B0-D78BF634C361";
 	setAttr ".tgi[0].tn" -type "string" "Untitled_1";
-	setAttr ".tgi[0].vl" -type "double2" -5894.3617545885645 1129.4440580724427 ;
-	setAttr ".tgi[0].vh" -type "double2" -5084.4207618849159 1778.3441516420323 ;
-	setAttr -s 5 ".tgi[0].ni";
-	setAttr ".tgi[0].ni[0].x" -5920;
-	setAttr ".tgi[0].ni[0].y" 1371.4285888671875;
+	setAttr ".tgi[0].vl" -type "double2" -14435.713712090563 374.24940065715032 ;
+	setAttr ".tgi[0].vh" -type "double2" -13008.692727820753 1775.6213149482546 ;
+	setAttr -s 26 ".tgi[0].ni";
+	setAttr ".tgi[0].ni[0].x" -14311.837890625;
+	setAttr ".tgi[0].ni[0].y" 1791.0345458984375;
 	setAttr ".tgi[0].ni[0].nvs" 1923;
-	setAttr ".tgi[0].ni[1].x" -5305.71435546875;
-	setAttr ".tgi[0].ni[1].y" 1911.4285888671875;
-	setAttr ".tgi[0].ni[1].nvs" 2387;
-	setAttr ".tgi[0].ni[2].x" -5920;
-	setAttr ".tgi[0].ni[2].y" 1547.142822265625;
+	setAttr ".tgi[0].ni[1].x" -14088.2578125;
+	setAttr ".tgi[0].ni[1].y" 1243.0489501953125;
+	setAttr ".tgi[0].ni[1].nvs" 18304;
+	setAttr ".tgi[0].ni[2].x" -15092.857421875;
+	setAttr ".tgi[0].ni[2].y" 1195.7142333984375;
 	setAttr ".tgi[0].ni[2].nvs" 1923;
-	setAttr ".tgi[0].ni[3].x" -5612.85693359375;
-	setAttr ".tgi[0].ni[3].y" 1454.2857666015625;
+	setAttr ".tgi[0].ni[3].x" -15822.857421875;
+	setAttr ".tgi[0].ni[3].y" 834.28570556640625;
 	setAttr ".tgi[0].ni[3].nvs" 1923;
-	setAttr ".tgi[0].ni[4].x" -5612.85693359375;
-	setAttr ".tgi[0].ni[4].y" 1866.0391845703125;
-	setAttr ".tgi[0].ni[4].nvs" 1923;
+	setAttr ".tgi[0].ni[4].x" -13872.2490234375;
+	setAttr ".tgi[0].ni[4].y" 1233.77392578125;
+	setAttr ".tgi[0].ni[4].nvs" 18304;
+	setAttr ".tgi[0].ni[5].x" -13645.4189453125;
+	setAttr ".tgi[0].ni[5].y" 1037.07080078125;
+	setAttr ".tgi[0].ni[5].nvs" 18305;
+	setAttr ".tgi[0].ni[6].x" -15092.857421875;
+	setAttr ".tgi[0].ni[6].y" 844.28570556640625;
+	setAttr ".tgi[0].ni[6].nvs" 1923;
+	setAttr ".tgi[0].ni[7].x" -13373.625;
+	setAttr ".tgi[0].ni[7].y" 1044.41943359375;
+	setAttr ".tgi[0].ni[7].nvs" 1923;
+	setAttr ".tgi[0].ni[8].x" -13860.669921875;
+	setAttr ".tgi[0].ni[8].y" 1526.3773193359375;
+	setAttr ".tgi[0].ni[8].nvs" 1923;
+	setAttr ".tgi[0].ni[9].x" -13662.6630859375;
+	setAttr ".tgi[0].ni[9].y" 1279.6690673828125;
+	setAttr ".tgi[0].ni[9].nvs" 18306;
+	setAttr ".tgi[0].ni[10].x" -14084.0869140625;
+	setAttr ".tgi[0].ni[10].y" 1051.7447509765625;
+	setAttr ".tgi[0].ni[10].nvs" 1923;
+	setAttr ".tgi[0].ni[11].x" -13845.27734375;
+	setAttr ".tgi[0].ni[11].y" 1010.5899047851562;
+	setAttr ".tgi[0].ni[11].nvs" 18304;
+	setAttr ".tgi[0].ni[12].x" -13859.6943359375;
+	setAttr ".tgi[0].ni[12].y" 527.26446533203125;
+	setAttr ".tgi[0].ni[12].nvs" 1923;
+	setAttr ".tgi[0].ni[13].x" -14645.7138671875;
+	setAttr ".tgi[0].ni[13].y" 1425.7142333984375;
+	setAttr ".tgi[0].ni[13].nvs" 2387;
+	setAttr ".tgi[0].ni[14].x" -14079.7451171875;
+	setAttr ".tgi[0].ni[14].y" 525.88616943359375;
+	setAttr ".tgi[0].ni[14].nvs" 1923;
+	setAttr ".tgi[0].ni[15].x" -14083.2333984375;
+	setAttr ".tgi[0].ni[15].y" 847.378662109375;
+	setAttr ".tgi[0].ni[15].nvs" 1923;
+	setAttr ".tgi[0].ni[16].x" -15515.7138671875;
+	setAttr ".tgi[0].ni[16].y" 981.4285888671875;
+	setAttr ".tgi[0].ni[16].nvs" 1923;
+	setAttr ".tgi[0].ni[17].x" -13431.052734375;
+	setAttr ".tgi[0].ni[17].y" 527.83538818359375;
+	setAttr ".tgi[0].ni[17].nvs" 1923;
+	setAttr ".tgi[0].ni[18].x" -14079.1982421875;
+	setAttr ".tgi[0].ni[18].y" 949.375244140625;
+	setAttr ".tgi[0].ni[18].nvs" 1923;
+	setAttr ".tgi[0].ni[19].x" -13636.8876953125;
+	setAttr ".tgi[0].ni[19].y" 525.88616943359375;
+	setAttr ".tgi[0].ni[19].nvs" 1923;
+	setAttr ".tgi[0].ni[20].x" -14092.677734375;
+	setAttr ".tgi[0].ni[20].y" 1128.09326171875;
+	setAttr ".tgi[0].ni[20].nvs" 18304;
+	setAttr ".tgi[0].ni[21].x" -14091.08984375;
+	setAttr ".tgi[0].ni[21].y" 1184.0623779296875;
+	setAttr ".tgi[0].ni[21].nvs" 18304;
+	setAttr ".tgi[0].ni[22].x" -15092.857421875;
+	setAttr ".tgi[0].ni[22].y" 1020;
+	setAttr ".tgi[0].ni[22].nvs" 1923;
+	setAttr ".tgi[0].ni[23].x" -15515.7138671875;
+	setAttr ".tgi[0].ni[23].y" 851.4285888671875;
+	setAttr ".tgi[0].ni[23].nvs" 1923;
+	setAttr ".tgi[0].ni[24].x" -14322.234375;
+	setAttr ".tgi[0].ni[24].y" 1150.869384765625;
+	setAttr ".tgi[0].ni[24].nvs" 1923;
+	setAttr ".tgi[0].ni[25].x" -14297.142578125;
+	setAttr ".tgi[0].ni[25].y" 707.14288330078125;
+	setAttr ".tgi[0].ni[25].nvs" 1923;
 select -ne :time1;
 	setAttr -av -k on ".cch";
 	setAttr -av -cb on ".ihi";
@@ -4499,7 +4947,7 @@ select -ne :renderPartition;
 	setAttr -cb on ".ihi";
 	setAttr -av -k on ".nds";
 	setAttr -cb on ".bnm";
-	setAttr -s 7 ".st";
+	setAttr -s 9 ".st";
 	setAttr -cb on ".an";
 	setAttr -cb on ".pt";
 select -ne :renderGlobalsList1;
@@ -4512,7 +4960,7 @@ select -ne :defaultShaderList1;
 	setAttr -cb on ".ihi";
 	setAttr -k on ".nds";
 	setAttr -cb on ".bnm";
-	setAttr -s 9 ".s";
+	setAttr -s 12 ".s";
 select -ne :postProcessList1;
 	setAttr -k on ".cch";
 	setAttr -cb on ".ihi";
@@ -4520,14 +4968,14 @@ select -ne :postProcessList1;
 	setAttr -cb on ".bnm";
 	setAttr -s 2 ".p";
 select -ne :defaultRenderUtilityList1;
-	setAttr -s 10 ".u";
+	setAttr -s 38 ".u";
 select -ne :defaultRenderingList1;
 	setAttr -k on ".ihi";
 	setAttr -s 3 ".r";
 select -ne :lightList1;
 	setAttr -s 4 ".l";
 select -ne :defaultTextureList1;
-	setAttr -s 8 ".tx";
+	setAttr -s 24 ".tx";
 select -ne :standardSurface1;
 	setAttr ".bc" -type "float3" 0.40000001 0.40000001 0.40000001 ;
 	setAttr ".sr" 0.5;
@@ -4541,6 +4989,7 @@ select -ne :initialShadingGroup;
 	setAttr -k on ".vwm";
 	setAttr -k on ".tpv";
 	setAttr -k on ".uit";
+	setAttr -s 2 ".dsm";
 	setAttr -k on ".mwc";
 	setAttr -cb on ".an";
 	setAttr -cb on ".il";
@@ -4603,7 +5052,7 @@ select -ne :defaultRenderGlobals;
 	setAttr -cb on ".ufe";
 	setAttr -av -cb on ".pff" yes;
 	setAttr -av -cb on ".peie";
-	setAttr -av -cb on ".ifp" -type "string" "FirstPaintTest_AndSomeEmission";
+	setAttr -av -cb on ".ifp" -type "string" "CustomShaderTest_02/NewCustomShader_On";
 	setAttr -k on ".rv";
 	setAttr -av -k on ".comp";
 	setAttr -av -k on ".cth";
@@ -4732,13 +5181,15 @@ select -ne :hardwareRenderGlobals;
 	setAttr -k on ".hwel";
 select -ne :ikSystem;
 	setAttr -s 2 ".sol";
-connectAttr "Skelly_Rig_Test_AnimsRN.phl[1]" "MainBody_Paint_MASH_Color.uvMatrix"
+connectAttr "Skelly_Rig_Test_AnimsRN.phl[1]" "MainBody_BG_MASH_Color.uvMatrix";
+connectAttr "Skelly_Rig_Test_AnimsRN.phl[2]" "MainBody_Paint_MASH_Color.uvMatrix"
 		;
-connectAttr "Skelly_Rig_Test_AnimsRN.phl[2]" "MainBody_Paint_MASH_Distribute.inM"
+connectAttr "Skelly_Rig_Test_AnimsRN.phl[3]" "set1.dsm" -na;
+connectAttr "Skelly_Rig_Test_AnimsRN.phl[4]" "MainBody_BG_MASH_Distribute.inM";
+connectAttr "Skelly_Rig_Test_AnimsRN.phl[5]" "MainBody_Paint_MASH_Distribute.inM"
 		;
-connectAttr "Skelly_Rig_Test_AnimsRN.phl[3]" "MainBody_Paint_MASH_Color.color";
-connectAttr "file2.oc" "Skelly_Rig_Test_AnimsRN.phl[4]";
-connectAttr "camera1_visibility.o" "camera1.v";
+connectAttr "Skelly_Rig_Test_AnimsRN.phl[6]" "MainBody_Paint_MASH_Color.color";
+connectAttr "file2.oc" "Skelly_Rig_Test_AnimsRN.phl[7]";
 connectAttr "camera1_translateX.o" "camera1.tx";
 connectAttr "camera1_translateY.o" "camera1.ty";
 connectAttr "camera1_translateZ.o" "camera1.tz";
@@ -4748,6 +5199,7 @@ connectAttr "camera1_rotateZ.o" "camera1.rz";
 connectAttr "camera1_scaleX.o" "camera1.sx";
 connectAttr "camera1_scaleY.o" "camera1.sy";
 connectAttr "camera1_scaleZ.o" "camera1.sz";
+connectAttr "camera1_visibility.o" "camera1.v";
 connectAttr "group1_rotateX.o" "Lights_01_Grp.rx";
 connectAttr "group1_rotateY.o" "Lights_01_Grp.ry";
 connectAttr "group1_rotateZ.o" "Lights_01_Grp.rz";
@@ -4786,7 +5238,8 @@ connectAttr "areaLight2_rotateZ.o" "areaLight2.rz";
 connectAttr "areaLight2_scaleX.o" "areaLight2.sx";
 connectAttr "areaLight2_scaleY.o" "areaLight2.sy";
 connectAttr "areaLight2_scaleZ.o" "areaLight2.sz";
-connectAttr "polyNormal5.out" "MASH1_ReproMeshShape.i";
+connectAttr "polyNormal5.out" "MASH_ReproMesh_SurfaceShape.i";
+connectAttr "MainBody_BG_MASH_Repro.out" "MASH_ReproMesh_BGShape.i";
 connectAttr "Camera_02_Grp_visibility.o" "Camera_02_Grp.v";
 connectAttr "Camera_02_Grp_translateX.o" "Camera_02_Grp.tx";
 connectAttr "Camera_02_Grp_translateY.o" "Camera_02_Grp.ty";
@@ -4840,11 +5293,15 @@ relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightS
 relationship "link" ":lightLinker1" "standardSurface2SG.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" "aiStandardSurface1SG.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" "aiStandardSurface2SG.message" ":defaultLightSet.message";
+relationship "link" ":lightLinker1" "brushStrokes_BG_MASH_aiStandardSurfaceSG.message" ":defaultLightSet.message";
+relationship "link" ":lightLinker1" "set1.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" "standardSurface2SG.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" "aiStandardSurface1SG.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" "aiStandardSurface2SG.message" ":defaultLightSet.message";
+relationship "shadowLink" ":lightLinker1" "brushStrokes_BG_MASH_aiStandardSurfaceSG.message" ":defaultLightSet.message";
+relationship "shadowLink" ":lightLinker1" "set1.message" ":defaultLightSet.message";
 connectAttr "layerManager.dli[0]" "defaultLayer.id";
 connectAttr "renderLayerManager.rlmi[0]" "defaultRenderLayer.rlid";
 connectAttr ":defaultArnoldDisplayDriver.msg" ":defaultArnoldRenderOptions.drivers"
@@ -5049,10 +5506,6 @@ connectAttr "aiImage1.out" "paint_stroke_standard_surface.op";
 connectAttr "paint_stroke_standard_surface.oc" "standardSurface2SG.ss";
 connectAttr "standardSurface2SG.msg" "materialInfo1.sg";
 connectAttr "paint_stroke_standard_surface.msg" "materialInfo1.m";
-connectAttr ":defaultColorMgtGlobals.cme" "aiImage1.cme";
-connectAttr ":defaultColorMgtGlobals.cfe" "aiImage1.cmcf";
-connectAttr ":defaultColorMgtGlobals.cfp" "aiImage1.cmcp";
-connectAttr ":defaultColorMgtGlobals.wsn" "aiImage1.ws";
 connectAttr "aiImage1.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[0].dn";
 connectAttr "paint_stroke_standard_surface.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[1].dn"
 		;
@@ -5109,8 +5562,9 @@ connectAttr "MainBody_Paint_MASH_Random.outputPoints" "MainBody_Paint_MASH.input
 		;
 connectAttr "MainBody_Paint_MASH_Distribute.waiterMessage" "MainBody_Paint_MASH.waiterMessage"
 		;
-connectAttr "MASH1_ReproMeshShape.wim" "MainBody_Paint_MASH_Repro.mmtx";
-connectAttr "MASH1_ReproMeshShape.msg" "MainBody_Paint_MASH_Repro.meshmessage";
+connectAttr "MASH_ReproMesh_SurfaceShape.wim" "MainBody_Paint_MASH_Repro.mmtx";
+connectAttr "MASH_ReproMesh_SurfaceShape.msg" "MainBody_Paint_MASH_Repro.meshmessage"
+		;
 connectAttr "MainBody_Paint_MASH.outputPoints" "MainBody_Paint_MASH_Repro.inputPoints"
 		;
 connectAttr "MainBody_Paint_MASH.instancerMessage" "MainBody_Paint_MASH_Repro.instancerMessage"
@@ -5155,7 +5609,7 @@ connectAttr "aiMultiply1.out" "brushStrokes_Body_MASH_aiStandardSurface.opacity"
 		;
 connectAttr "brushStrokes_Body_MASH_aiStandardSurface.out" "aiStandardSurface2SG.ss"
 		;
-connectAttr "MASH1_ReproMeshShape.iog" "aiStandardSurface2SG.dsm" -na;
+connectAttr "MASH_ReproMesh_SurfaceShape.iog" "aiStandardSurface2SG.dsm" -na;
 connectAttr "aiStandardSurface2SG.msg" "materialInfo3.sg";
 connectAttr "brushStrokes_Body_MASH_aiStandardSurface.msg" "materialInfo3.m";
 connectAttr "brushStrokes_Body_MASH_aiStandardSurface.msg" "materialInfo3.t" -na
@@ -5189,23 +5643,522 @@ connectAttr "place2dTexture4.vt3" "file4.vt3";
 connectAttr "place2dTexture4.vc1" "file4.vc1";
 connectAttr "place2dTexture4.o" "file4.uv";
 connectAttr "place2dTexture4.ofs" "file4.fs";
-connectAttr "aiImage1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[0].dn"
+connectAttr ":defaultColorMgtGlobals.cme" "file5.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file5.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file5.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file5.ws";
+connectAttr "place2dTexture5.c" "file5.c";
+connectAttr "place2dTexture5.tf" "file5.tf";
+connectAttr "place2dTexture5.rf" "file5.rf";
+connectAttr "place2dTexture5.mu" "file5.mu";
+connectAttr "place2dTexture5.mv" "file5.mv";
+connectAttr "place2dTexture5.s" "file5.s";
+connectAttr "place2dTexture5.wu" "file5.wu";
+connectAttr "place2dTexture5.wv" "file5.wv";
+connectAttr "place2dTexture5.re" "file5.re";
+connectAttr "place2dTexture5.of" "file5.of";
+connectAttr "place2dTexture5.r" "file5.ro";
+connectAttr "place2dTexture5.n" "file5.n";
+connectAttr "place2dTexture5.vt1" "file5.vt1";
+connectAttr "place2dTexture5.vt2" "file5.vt2";
+connectAttr "place2dTexture5.vt3" "file5.vt3";
+connectAttr "place2dTexture5.vc1" "file5.vc1";
+connectAttr "place2dTexture5.o" "file5.uv";
+connectAttr "place2dTexture5.ofs" "file5.fs";
+connectAttr "aiUserDataColor2.out" "brushStrokes_BG_MASH_aiStandardSurface.base_color"
 		;
-connectAttr "brushStrokes_Body_MASH_aiStandardSurface.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[1].dn"
+connectAttr "aiImage1.out" "brushStrokes_BG_MASH_aiStandardSurface.opacity";
+connectAttr "brushStrokes_BG_MASH_aiStandardSurface.out" "brushStrokes_BG_MASH_aiStandardSurfaceSG.ss"
 		;
-connectAttr "aiFacingRatio1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[2].dn"
+connectAttr "MASH_ReproMesh_BGShape.iog" "brushStrokes_BG_MASH_aiStandardSurfaceSG.dsm"
+		 -na;
+connectAttr "brushStrokes_BG_MASH_aiStandardSurfaceSG.msg" "materialInfo4.sg";
+connectAttr "brushStrokes_BG_MASH_aiStandardSurface.msg" "materialInfo4.m";
+connectAttr "brushStrokes_BG_MASH_aiStandardSurface.msg" "materialInfo4.t" -na;
+connectAttr ":defaultColorMgtGlobals.cme" "aiImage1.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "aiImage1.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "aiImage1.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "aiImage1.ws";
+connectAttr "MainBody_BG_MASH_Offset.outputPoints" "MainBody_BG_MASH.inputPoints"
 		;
-connectAttr "aiMultiply1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[3].dn"
+connectAttr "MainBody_BG_MASH_Distribute.waiterMessage" "MainBody_BG_MASH.waiterMessage"
 		;
-connectAttr "aiUserDataColor1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[4].dn"
+connectAttr "MASH_ReproMesh_BGShape.wim" "MainBody_BG_MASH_Repro.mmtx";
+connectAttr "MASH_ReproMesh_BGShape.msg" "MainBody_BG_MASH_Repro.meshmessage";
+connectAttr "MainBody_BG_MASH.outputPoints" "MainBody_BG_MASH_Repro.inputPoints"
+		;
+connectAttr "BrushStroke_02.msg" "MainBody_BG_MASH_Repro.instancedGroup[0].gmsg"
+		;
+connectAttr "BrushStroke_02.wm" "MainBody_BG_MASH_Repro.instancedGroup[0].gmtx";
+connectAttr "BrushStroke_Shape2.o" "MainBody_BG_MASH_Repro.instancedGroup[0].inMesh[0].mesh"
+		;
+connectAttr "BrushStroke_Shape2.wm" "MainBody_BG_MASH_Repro.instancedGroup[0].inMesh[0].matrix"
+		;
+connectAttr "MainBody_BG_MASH.instancerMessage" "MainBody_BG_MASH_Repro.instancerMessage"
+		;
+connectAttr "MainBody_BG_MASH_Orient.outputPoints" "MainBody_BG_MASH_Random.inputPoints"
+		;
+connectAttr "MainBody_BG_MASH_Distribute.outputPoints" "MainBody_BG_MASH_Color.inputPoints"
+		;
+connectAttr "file5.oc" "MainBody_BG_MASH_Color.color";
+connectAttr ":time1.o" "MainBody_BG_MASH_Orient.ti";
+connectAttr "MainBody_BG_MASH_Color.outputPoints" "MainBody_BG_MASH_Orient.inputPoints"
+		;
+connectAttr "camera1.t" "MainBody_BG_MASH_Orient.tin";
+connectAttr ":time1.o" "MainBody_BG_MASH_Offset.ti";
+connectAttr "MainBody_BG_MASH_Random.outputPoints" "MainBody_BG_MASH_Offset.inputPoints"
+		;
+connectAttr ":defaultColorMgtGlobals.cme" "pasted__file2.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "pasted__file2.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "pasted__file2.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "pasted__file2.ws";
+connectAttr "pasted__place2dTexture2.c" "pasted__file2.c";
+connectAttr "pasted__place2dTexture2.tf" "pasted__file2.tf";
+connectAttr "pasted__place2dTexture2.rf" "pasted__file2.rf";
+connectAttr "pasted__place2dTexture2.mu" "pasted__file2.mu";
+connectAttr "pasted__place2dTexture2.mv" "pasted__file2.mv";
+connectAttr "pasted__place2dTexture2.s" "pasted__file2.s";
+connectAttr "pasted__place2dTexture2.wu" "pasted__file2.wu";
+connectAttr "pasted__place2dTexture2.wv" "pasted__file2.wv";
+connectAttr "pasted__place2dTexture2.re" "pasted__file2.re";
+connectAttr "pasted__place2dTexture2.of" "pasted__file2.of";
+connectAttr "pasted__place2dTexture2.r" "pasted__file2.ro";
+connectAttr "pasted__place2dTexture2.n" "pasted__file2.n";
+connectAttr "pasted__place2dTexture2.vt1" "pasted__file2.vt1";
+connectAttr "pasted__place2dTexture2.vt2" "pasted__file2.vt2";
+connectAttr "pasted__place2dTexture2.vt3" "pasted__file2.vt3";
+connectAttr "pasted__place2dTexture2.vc1" "pasted__file2.vc1";
+connectAttr "pasted__place2dTexture2.o" "pasted__file2.uv";
+connectAttr "pasted__place2dTexture2.ofs" "pasted__file2.fs";
+connectAttr ":defaultColorMgtGlobals.cme" "Skelly_Rig_Test_Anims1:Skeleton:file3.cme"
+		;
+connectAttr ":defaultColorMgtGlobals.cfe" "Skelly_Rig_Test_Anims1:Skeleton:file3.cmcf"
+		;
+connectAttr ":defaultColorMgtGlobals.cfp" "Skelly_Rig_Test_Anims1:Skeleton:file3.cmcp"
+		;
+connectAttr ":defaultColorMgtGlobals.wsn" "Skelly_Rig_Test_Anims1:Skeleton:file3.ws"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.o" "Skelly_Rig_Test_Anims1:Skeleton:file3.uv"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.ofs" "Skelly_Rig_Test_Anims1:Skeleton:file3.fs"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.c" "Skelly_Rig_Test_Anims1:Skeleton:file3.c"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.tf" "Skelly_Rig_Test_Anims1:Skeleton:file3.tf"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.rf" "Skelly_Rig_Test_Anims1:Skeleton:file3.rf"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.mu" "Skelly_Rig_Test_Anims1:Skeleton:file3.mu"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.mv" "Skelly_Rig_Test_Anims1:Skeleton:file3.mv"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.s" "Skelly_Rig_Test_Anims1:Skeleton:file3.s"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.wu" "Skelly_Rig_Test_Anims1:Skeleton:file3.wu"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.wv" "Skelly_Rig_Test_Anims1:Skeleton:file3.wv"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.re" "Skelly_Rig_Test_Anims1:Skeleton:file3.re"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.of" "Skelly_Rig_Test_Anims1:Skeleton:file3.of"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.r" "Skelly_Rig_Test_Anims1:Skeleton:file3.ro"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.n" "Skelly_Rig_Test_Anims1:Skeleton:file3.n"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.vt1" "Skelly_Rig_Test_Anims1:Skeleton:file3.vt1"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.vt2" "Skelly_Rig_Test_Anims1:Skeleton:file3.vt2"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.vt3" "Skelly_Rig_Test_Anims1:Skeleton:file3.vt3"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.vc1" "Skelly_Rig_Test_Anims1:Skeleton:file3.vc1"
+		;
+connectAttr ":defaultColorMgtGlobals.cme" "Skelly_Rig_Test_Anims1:Skeleton:file2.cme"
+		;
+connectAttr ":defaultColorMgtGlobals.cfe" "Skelly_Rig_Test_Anims1:Skeleton:file2.cmcf"
+		;
+connectAttr ":defaultColorMgtGlobals.cfp" "Skelly_Rig_Test_Anims1:Skeleton:file2.cmcp"
+		;
+connectAttr ":defaultColorMgtGlobals.wsn" "Skelly_Rig_Test_Anims1:Skeleton:file2.ws"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.o" "Skelly_Rig_Test_Anims1:Skeleton:file2.uv"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.ofs" "Skelly_Rig_Test_Anims1:Skeleton:file2.fs"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.c" "Skelly_Rig_Test_Anims1:Skeleton:file2.c"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.tf" "Skelly_Rig_Test_Anims1:Skeleton:file2.tf"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.rf" "Skelly_Rig_Test_Anims1:Skeleton:file2.rf"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.mu" "Skelly_Rig_Test_Anims1:Skeleton:file2.mu"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.mv" "Skelly_Rig_Test_Anims1:Skeleton:file2.mv"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.s" "Skelly_Rig_Test_Anims1:Skeleton:file2.s"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.wu" "Skelly_Rig_Test_Anims1:Skeleton:file2.wu"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.wv" "Skelly_Rig_Test_Anims1:Skeleton:file2.wv"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.re" "Skelly_Rig_Test_Anims1:Skeleton:file2.re"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.of" "Skelly_Rig_Test_Anims1:Skeleton:file2.of"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.r" "Skelly_Rig_Test_Anims1:Skeleton:file2.ro"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.n" "Skelly_Rig_Test_Anims1:Skeleton:file2.n"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.vt1" "Skelly_Rig_Test_Anims1:Skeleton:file2.vt1"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.vt2" "Skelly_Rig_Test_Anims1:Skeleton:file2.vt2"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.vt3" "Skelly_Rig_Test_Anims1:Skeleton:file2.vt3"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.vc1" "Skelly_Rig_Test_Anims1:Skeleton:file2.vc1"
+		;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:file2.oa" "Skelly_Rig_Test_Anims1:Skeleton:bump2d1.bv"
+		;
+connectAttr ":defaultColorMgtGlobals.cme" "pasted__file3.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "pasted__file3.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "pasted__file3.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "pasted__file3.ws";
+connectAttr "pasted__place2dTexture3.c" "pasted__file3.c";
+connectAttr "pasted__place2dTexture3.tf" "pasted__file3.tf";
+connectAttr "pasted__place2dTexture3.rf" "pasted__file3.rf";
+connectAttr "pasted__place2dTexture3.mu" "pasted__file3.mu";
+connectAttr "pasted__place2dTexture3.mv" "pasted__file3.mv";
+connectAttr "pasted__place2dTexture3.s" "pasted__file3.s";
+connectAttr "pasted__place2dTexture3.wu" "pasted__file3.wu";
+connectAttr "pasted__place2dTexture3.wv" "pasted__file3.wv";
+connectAttr "pasted__place2dTexture3.re" "pasted__file3.re";
+connectAttr "pasted__place2dTexture3.of" "pasted__file3.of";
+connectAttr "pasted__place2dTexture3.r" "pasted__file3.ro";
+connectAttr "pasted__place2dTexture3.n" "pasted__file3.n";
+connectAttr "pasted__place2dTexture3.vt1" "pasted__file3.vt1";
+connectAttr "pasted__place2dTexture3.vt2" "pasted__file3.vt2";
+connectAttr "pasted__place2dTexture3.vt3" "pasted__file3.vt3";
+connectAttr "pasted__place2dTexture3.vc1" "pasted__file3.vc1";
+connectAttr "pasted__place2dTexture3.o" "pasted__file3.uv";
+connectAttr "pasted__place2dTexture3.ofs" "pasted__file3.fs";
+connectAttr ":defaultColorMgtGlobals.cme" "Skelly_Rig_Test_Anims2:Skeleton:file3.cme"
+		;
+connectAttr ":defaultColorMgtGlobals.cfe" "Skelly_Rig_Test_Anims2:Skeleton:file3.cmcf"
+		;
+connectAttr ":defaultColorMgtGlobals.cfp" "Skelly_Rig_Test_Anims2:Skeleton:file3.cmcp"
+		;
+connectAttr ":defaultColorMgtGlobals.wsn" "Skelly_Rig_Test_Anims2:Skeleton:file3.ws"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.o" "Skelly_Rig_Test_Anims2:Skeleton:file3.uv"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.ofs" "Skelly_Rig_Test_Anims2:Skeleton:file3.fs"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.c" "Skelly_Rig_Test_Anims2:Skeleton:file3.c"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.tf" "Skelly_Rig_Test_Anims2:Skeleton:file3.tf"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.rf" "Skelly_Rig_Test_Anims2:Skeleton:file3.rf"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.mu" "Skelly_Rig_Test_Anims2:Skeleton:file3.mu"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.mv" "Skelly_Rig_Test_Anims2:Skeleton:file3.mv"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.s" "Skelly_Rig_Test_Anims2:Skeleton:file3.s"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.wu" "Skelly_Rig_Test_Anims2:Skeleton:file3.wu"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.wv" "Skelly_Rig_Test_Anims2:Skeleton:file3.wv"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.re" "Skelly_Rig_Test_Anims2:Skeleton:file3.re"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.of" "Skelly_Rig_Test_Anims2:Skeleton:file3.of"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.r" "Skelly_Rig_Test_Anims2:Skeleton:file3.ro"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.n" "Skelly_Rig_Test_Anims2:Skeleton:file3.n"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.vt1" "Skelly_Rig_Test_Anims2:Skeleton:file3.vt1"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.vt2" "Skelly_Rig_Test_Anims2:Skeleton:file3.vt2"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.vt3" "Skelly_Rig_Test_Anims2:Skeleton:file3.vt3"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.vc1" "Skelly_Rig_Test_Anims2:Skeleton:file3.vc1"
+		;
+connectAttr ":defaultColorMgtGlobals.cme" "Skelly_Rig_Test_Anims2:Skeleton:file2.cme"
+		;
+connectAttr ":defaultColorMgtGlobals.cfe" "Skelly_Rig_Test_Anims2:Skeleton:file2.cmcf"
+		;
+connectAttr ":defaultColorMgtGlobals.cfp" "Skelly_Rig_Test_Anims2:Skeleton:file2.cmcp"
+		;
+connectAttr ":defaultColorMgtGlobals.wsn" "Skelly_Rig_Test_Anims2:Skeleton:file2.ws"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.o" "Skelly_Rig_Test_Anims2:Skeleton:file2.uv"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.ofs" "Skelly_Rig_Test_Anims2:Skeleton:file2.fs"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.c" "Skelly_Rig_Test_Anims2:Skeleton:file2.c"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.tf" "Skelly_Rig_Test_Anims2:Skeleton:file2.tf"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.rf" "Skelly_Rig_Test_Anims2:Skeleton:file2.rf"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.mu" "Skelly_Rig_Test_Anims2:Skeleton:file2.mu"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.mv" "Skelly_Rig_Test_Anims2:Skeleton:file2.mv"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.s" "Skelly_Rig_Test_Anims2:Skeleton:file2.s"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.wu" "Skelly_Rig_Test_Anims2:Skeleton:file2.wu"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.wv" "Skelly_Rig_Test_Anims2:Skeleton:file2.wv"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.re" "Skelly_Rig_Test_Anims2:Skeleton:file2.re"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.of" "Skelly_Rig_Test_Anims2:Skeleton:file2.of"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.r" "Skelly_Rig_Test_Anims2:Skeleton:file2.ro"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.n" "Skelly_Rig_Test_Anims2:Skeleton:file2.n"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.vt1" "Skelly_Rig_Test_Anims2:Skeleton:file2.vt1"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.vt2" "Skelly_Rig_Test_Anims2:Skeleton:file2.vt2"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.vt3" "Skelly_Rig_Test_Anims2:Skeleton:file2.vt3"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.vc1" "Skelly_Rig_Test_Anims2:Skeleton:file2.vc1"
+		;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:file2.oa" "Skelly_Rig_Test_Anims2:Skeleton:bump2d1.bv"
+		;
+connectAttr ":defaultColorMgtGlobals.cme" "file6.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file6.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file6.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file6.ws";
+connectAttr ":defaultColorMgtGlobals.cme" "file7.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file7.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file7.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file7.ws";
+connectAttr "place2dTexture6.o" "file7.uv";
+connectAttr ":defaultColorMgtGlobals.cme" "file8.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file8.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file8.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file8.ws";
+connectAttr "place2dTexture6.o" "file8.uv";
+connectAttr "file8.oa" "bump2d1.bv";
+connectAttr ":defaultColorMgtGlobals.cme" "file9.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file9.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file9.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file9.ws";
+connectAttr "place2dTexture8.o" "file9.uv";
+connectAttr "place2dTexture8.ofs" "file9.fs";
+connectAttr "place2dTexture8.c" "file9.c";
+connectAttr "place2dTexture8.tf" "file9.tf";
+connectAttr "place2dTexture8.rf" "file9.rf";
+connectAttr "place2dTexture8.mu" "file9.mu";
+connectAttr "place2dTexture8.mv" "file9.mv";
+connectAttr "place2dTexture8.s" "file9.s";
+connectAttr "place2dTexture8.wu" "file9.wu";
+connectAttr "place2dTexture8.wv" "file9.wv";
+connectAttr "place2dTexture8.re" "file9.re";
+connectAttr "place2dTexture8.of" "file9.of";
+connectAttr "place2dTexture8.r" "file9.ro";
+connectAttr "place2dTexture8.n" "file9.n";
+connectAttr "place2dTexture8.vt1" "file9.vt1";
+connectAttr "place2dTexture8.vt2" "file9.vt2";
+connectAttr "place2dTexture8.vt3" "file9.vt3";
+connectAttr "place2dTexture8.vc1" "file9.vc1";
+connectAttr ":defaultColorMgtGlobals.cme" "file10.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file10.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file10.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file10.ws";
+connectAttr "place2dTexture8.o" "file10.uv";
+connectAttr "place2dTexture8.ofs" "file10.fs";
+connectAttr "place2dTexture8.c" "file10.c";
+connectAttr "place2dTexture8.tf" "file10.tf";
+connectAttr "place2dTexture8.rf" "file10.rf";
+connectAttr "place2dTexture8.mu" "file10.mu";
+connectAttr "place2dTexture8.mv" "file10.mv";
+connectAttr "place2dTexture8.s" "file10.s";
+connectAttr "place2dTexture8.wu" "file10.wu";
+connectAttr "place2dTexture8.wv" "file10.wv";
+connectAttr "place2dTexture8.re" "file10.re";
+connectAttr "place2dTexture8.of" "file10.of";
+connectAttr "place2dTexture8.r" "file10.ro";
+connectAttr "place2dTexture8.n" "file10.n";
+connectAttr "place2dTexture8.vt1" "file10.vt1";
+connectAttr "place2dTexture8.vt2" "file10.vt2";
+connectAttr "place2dTexture8.vt3" "file10.vt3";
+connectAttr "place2dTexture8.vc1" "file10.vc1";
+connectAttr ":defaultColorMgtGlobals.cme" "file11.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file11.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file11.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file11.ws";
+connectAttr "place2dTexture8.o" "file11.uv";
+connectAttr "place2dTexture8.ofs" "file11.fs";
+connectAttr "place2dTexture8.c" "file11.c";
+connectAttr "place2dTexture8.tf" "file11.tf";
+connectAttr "place2dTexture8.rf" "file11.rf";
+connectAttr "place2dTexture8.mu" "file11.mu";
+connectAttr "place2dTexture8.mv" "file11.mv";
+connectAttr "place2dTexture8.s" "file11.s";
+connectAttr "place2dTexture8.wu" "file11.wu";
+connectAttr "place2dTexture8.wv" "file11.wv";
+connectAttr "place2dTexture8.re" "file11.re";
+connectAttr "place2dTexture8.of" "file11.of";
+connectAttr "place2dTexture8.r" "file11.ro";
+connectAttr "place2dTexture8.n" "file11.n";
+connectAttr "place2dTexture8.vt1" "file11.vt1";
+connectAttr "place2dTexture8.vt2" "file11.vt2";
+connectAttr "place2dTexture8.vt3" "file11.vt3";
+connectAttr "place2dTexture8.vc1" "file11.vc1";
+connectAttr "file9.oc" "multiplyDivide1.i1";
+connectAttr "aiLayerRgba1.out" "Skelly_Tester_Material.base_color";
+connectAttr "bump2d2.o" "Skelly_Tester_Material.n";
+connectAttr "file11.oa" "Skelly_Tester_Material.specular_roughness";
+connectAttr "aiLayerRgba1.out" "Skelly_Tester_Material.emission_color";
+connectAttr "Skelly_Tester_Material.out" "set1.ss";
+connectAttr "set1.msg" "materialInfo5.sg";
+connectAttr "Skelly_Tester_Material.msg" "materialInfo5.m";
+connectAttr "Skelly_Tester_Material.msg" "materialInfo5.t" -na;
+connectAttr "file10.oa" "bump2d2.bv";
+connectAttr ":defaultColorMgtGlobals.cme" "file12.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file12.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file12.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file12.ws";
+connectAttr "place2dTexture9.c" "file12.c";
+connectAttr "place2dTexture9.tf" "file12.tf";
+connectAttr "place2dTexture9.rf" "file12.rf";
+connectAttr "place2dTexture9.mu" "file12.mu";
+connectAttr "place2dTexture9.mv" "file12.mv";
+connectAttr "place2dTexture9.s" "file12.s";
+connectAttr "place2dTexture9.wu" "file12.wu";
+connectAttr "place2dTexture9.wv" "file12.wv";
+connectAttr "place2dTexture9.re" "file12.re";
+connectAttr "place2dTexture9.of" "file12.of";
+connectAttr "place2dTexture9.r" "file12.ro";
+connectAttr "place2dTexture9.n" "file12.n";
+connectAttr "place2dTexture9.vt1" "file12.vt1";
+connectAttr "place2dTexture9.vt2" "file12.vt2";
+connectAttr "place2dTexture9.vt3" "file12.vt3";
+connectAttr "place2dTexture9.vc1" "file12.vc1";
+connectAttr "place2dTexture9.o" "file12.uv";
+connectAttr "place2dTexture9.ofs" "file12.fs";
+connectAttr "aiUtility1.outr" "aiRampRgb1.input";
+connectAttr "aiUtility1.outg" "aiRampRgb2.input";
+connectAttr "aiUtility1.outb" "aiRampRgb3.input";
+connectAttr "aiRampRgb1.out" "aiAdd1.input1";
+connectAttr "aiRampRgb2.out" "aiAdd1.input2";
+connectAttr "aiAdd1.out" "aiAdd2.input1";
+connectAttr "aiRampRgb3.out" "aiAdd2.input2";
+connectAttr "aiUtility1.outr" "aiRampRgb4.input";
+connectAttr "aiUtility1.outg" "aiRampRgb5.input";
+connectAttr "aiUtility1.outb" "aiRampRgb6.input";
+connectAttr "aiRampRgb4.out" "aiAdd3.input1";
+connectAttr "aiRampRgb5.out" "aiAdd3.input2";
+connectAttr "aiAdd3.out" "aiAdd4.input1";
+connectAttr "aiRampRgb6.out" "aiAdd4.input2";
+connectAttr "place3dTexture1.wim" "projection1.pm";
+connectAttr "file13.oc" "projection1.im";
+connectAttr "|camera1|cameraShape2.msg" "projection1.lc";
+connectAttr ":defaultColorMgtGlobals.cme" "file13.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file13.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file13.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file13.ws";
+connectAttr "place2dTexture10.c" "file13.c";
+connectAttr "place2dTexture10.tf" "file13.tf";
+connectAttr "place2dTexture10.rf" "file13.rf";
+connectAttr "place2dTexture10.mu" "file13.mu";
+connectAttr "place2dTexture10.mv" "file13.mv";
+connectAttr "place2dTexture10.s" "file13.s";
+connectAttr "place2dTexture10.wu" "file13.wu";
+connectAttr "place2dTexture10.wv" "file13.wv";
+connectAttr "place2dTexture10.re" "file13.re";
+connectAttr "place2dTexture10.of" "file13.of";
+connectAttr "place2dTexture10.r" "file13.ro";
+connectAttr "place2dTexture10.n" "file13.n";
+connectAttr "place2dTexture10.vt1" "file13.vt1";
+connectAttr "place2dTexture10.vt2" "file13.vt2";
+connectAttr "place2dTexture10.vt3" "file13.vt3";
+connectAttr "place2dTexture10.vc1" "file13.vc1";
+connectAttr "place2dTexture10.o" "file13.uv";
+connectAttr "place2dTexture10.ofs" "file13.fs";
+connectAttr "place2dTexture10_offsetU.o" "place2dTexture10.ofu";
+connectAttr "place2dTexture10_offsetV.o" "place2dTexture10.ofv";
+connectAttr "place2dTexture10_rotateUV.o" "place2dTexture10.r";
+connectAttr "file9.oc" "aiLayerRgba1.input1";
+connectAttr "aiAdd2.out" "aiLayerRgba1.input2";
+connectAttr "reverse1.o" "aiLayerRgba1.input3";
+connectAttr "projection1.ocr" "aiLayerRgba1.mix2";
+connectAttr "projection1.ocr" "aiLayerRgba1.mix3";
+connectAttr "aiAdd4.out" "reverse1.i";
+connectAttr "aiLayerRgba1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[0].dn"
+		;
+connectAttr "aiRampRgb1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[1].dn"
+		;
+connectAttr "file11.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[2].dn"
+		;
+connectAttr "place2dTexture8.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[3].dn"
+		;
+connectAttr "aiAdd1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[4].dn"
+		;
+connectAttr "aiAdd4.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[5].dn"
+		;
+connectAttr "bump2d2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[6].dn"
+		;
+connectAttr "reverse1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[7].dn"
+		;
+connectAttr "set1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[8].dn"
+		;
+connectAttr "aiAdd2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[9].dn"
+		;
+connectAttr "aiRampRgb4.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[10].dn"
+		;
+connectAttr "aiAdd3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[11].dn"
+		;
+connectAttr "file13.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[12].dn"
+		;
+connectAttr "Skelly_Tester_Material.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[13].dn"
+		;
+connectAttr "place2dTexture10.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[14].dn"
+		;
+connectAttr "aiRampRgb6.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[15].dn"
+		;
+connectAttr "place2dTexture9.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[16].dn"
+		;
+connectAttr "projection1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[17].dn"
+		;
+connectAttr "aiRampRgb5.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[18].dn"
+		;
+connectAttr "place3dTexture1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[19].dn"
+		;
+connectAttr "aiRampRgb3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[20].dn"
+		;
+connectAttr "aiRampRgb2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[21].dn"
+		;
+connectAttr "file12.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[22].dn"
+		;
+connectAttr "file10.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[23].dn"
+		;
+connectAttr "aiUtility1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[24].dn"
+		;
+connectAttr "file9.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[25].dn"
 		;
 connectAttr "standardSurface2SG.pa" ":renderPartition.st" -na;
 connectAttr "aiStandardSurface1SG.pa" ":renderPartition.st" -na;
 connectAttr "aiStandardSurface2SG.pa" ":renderPartition.st" -na;
+connectAttr "brushStrokes_BG_MASH_aiStandardSurfaceSG.pa" ":renderPartition.st" 
+		-na;
+connectAttr "set1.pa" ":renderPartition.st" -na;
 connectAttr "paint_stroke_standard_surface.msg" ":defaultShaderList1.s" -na;
 connectAttr "aiStandardSurface1.msg" ":defaultShaderList1.s" -na;
 connectAttr "brushStrokes_Body_MASH_aiStandardSurface.msg" ":defaultShaderList1.s"
 		 -na;
+connectAttr "brushStrokes_BG_MASH_aiStandardSurface.msg" ":defaultShaderList1.s"
+		 -na;
+connectAttr "Skelly_Tester_Material.msg" ":defaultShaderList1.s" -na;
+connectAttr "aiUtility1.msg" ":defaultShaderList1.s" -na;
 connectAttr "place2dTexture1.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "place2dTexture2.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "place2dTexture3.msg" ":defaultRenderUtilityList1.u" -na;
@@ -5213,6 +6166,38 @@ connectAttr "aiUserDataColor1.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "aiFacingRatio1.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "aiMultiply1.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "place2dTexture4.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture5.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "aiUserDataColor2.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "pasted__place2dTexture2.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:place2dTexture1.msg" ":defaultRenderUtilityList1.u"
+		 -na;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:bump2d1.msg" ":defaultRenderUtilityList1.u"
+		 -na;
+connectAttr "pasted__place2dTexture3.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:place2dTexture1.msg" ":defaultRenderUtilityList1.u"
+		 -na;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:bump2d1.msg" ":defaultRenderUtilityList1.u"
+		 -na;
+connectAttr "place2dTexture6.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "bump2d1.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture7.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture8.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "bump2d2.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture9.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "aiRampRgb1.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "aiRampRgb2.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "aiRampRgb3.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "aiAdd1.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "aiAdd2.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "aiRampRgb4.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "aiRampRgb5.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "aiRampRgb6.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "aiAdd3.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "aiAdd4.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place3dTexture1.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture10.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "aiLayerRgba1.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "reverse1.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
 connectAttr "areaLightShape1.ltd" ":lightList1.l" -na;
 connectAttr "areaLightShape2.ltd" ":lightList1.l" -na;
@@ -5223,7 +6208,28 @@ connectAttr "file1.msg" ":defaultTextureList1.tx" -na;
 connectAttr "file2.msg" ":defaultTextureList1.tx" -na;
 connectAttr "file3.msg" ":defaultTextureList1.tx" -na;
 connectAttr "file4.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file5.msg" ":defaultTextureList1.tx" -na;
+connectAttr "pasted__file2.msg" ":defaultTextureList1.tx" -na;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:file2.msg" ":defaultTextureList1.tx"
+		 -na;
+connectAttr "Skelly_Rig_Test_Anims1:Skeleton:file3.msg" ":defaultTextureList1.tx"
+		 -na;
+connectAttr "pasted__file3.msg" ":defaultTextureList1.tx" -na;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:file2.msg" ":defaultTextureList1.tx"
+		 -na;
+connectAttr "Skelly_Rig_Test_Anims2:Skeleton:file3.msg" ":defaultTextureList1.tx"
+		 -na;
+connectAttr "file6.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file7.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file8.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file9.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file10.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file11.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file12.msg" ":defaultTextureList1.tx" -na;
+connectAttr "projection1.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file13.msg" ":defaultTextureList1.tx" -na;
 connectAttr "BrushStroke_Shape1.iog" ":initialShadingGroup.dsm" -na;
+connectAttr "BrushStroke_Shape2.iog" ":initialShadingGroup.dsm" -na;
 connectAttr "areaLight1.iog" ":defaultLightSet.dsm" -na;
 connectAttr "areaLight2.iog" ":defaultLightSet.dsm" -na;
 connectAttr "areaLight3.iog" ":defaultLightSet.dsm" -na;
